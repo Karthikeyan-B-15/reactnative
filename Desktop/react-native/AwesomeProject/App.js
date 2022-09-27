@@ -1,31 +1,22 @@
-/* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
-import {Text, View, Button} from 'react-native';
-
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from '../AwesomeProject/components/Home';
+import List from '../AwesomeProject/components/List';
+const Stack = createNativeStackNavigator();
 const App = () => {
-  const [count, setCount] = useState(0);
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'rgb(71, 85, 105)',
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text
-        style={{
-          color: '#fff',
-          display: 'flex',
-          fontSize: 50,
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: 'rgb(71, 85, 105)',
+          },
         }}>
-        {count}
-      </Text>
-      <Button
-        title="click me"
-        onPress={() => setCount(prevCount => prevCount + 1)}
-      />
-    </View>
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="list" component={List} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
